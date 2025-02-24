@@ -20,7 +20,7 @@ function App() {
           <Route path="/players" element={<Players />} />
           <Route path="/addplayers" element={<AddPlayer />} />
           <Route path="/login" element={<LoginPage/>} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route path="/secretregister" element={<RegisterPage />} />
         </Routes>
       </main>
     </div>

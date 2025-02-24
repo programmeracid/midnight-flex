@@ -1,13 +1,17 @@
 import { create } from "zustand";
 
+
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+
 export const useAuthStore = create((set) => ({
     user: null,
     isLoggedIn: false,
+    
 
     login: async ({username, password}) => {
         console.log(JSON.stringify({ username, password }));
         try {
-            const res = await fetch("http://localhost:5001/api/auth/login", {
+            const res = await fetch(BASE_URL+"/api/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -19,14 +23,16 @@ export const useAuthStore = create((set) => ({
             if (!res.ok) throw new Error("Login failed");
 
             set({ user: username, isLoggedIn: true });
+            
+            
         } catch (error) {
             console.error("Login error:", error);
         }
     },
 
-    register: async (username, password) => {
+    register: async ({username, password}) => {
         try {
-            const res = await fetch("http://localhost:5001/api/auth/register", {
+            const res = await fetch(BASE_URL+"/api/auth/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +52,7 @@ export const useAuthStore = create((set) => ({
 
     logout: async () => {
         try {
-            await fetch("http://localhost:5001/api/auth/logout", {
+            await fetch(BASE_URL+"/api/auth/logout", {
                 method: "POST",
                 credentials: "include",
             });
@@ -59,7 +65,7 @@ export const useAuthStore = create((set) => ({
 
     checkAuth: async () => {
         try {
-            const res = await fetch("http://localhost:5001/api/auth/check-auth", {
+            const res = await fetch(BASE_URL+"/api/auth/check-auth", {
                 credentials: "include",
             });
 
