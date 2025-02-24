@@ -1,0 +1,93 @@
+/* Player Card - Fancy UI */
+.player-card {
+    width: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Translucent black */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    color: white;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+
+.player-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Wrapper */
+.player-img {
+    width: 100%;
+    height: 250px; /* Ensures square shape */
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: flex-start; /* Ensures it crops from the top */
+}
+
+/* Image Settings (No Blurring, Keep Pixels Sharp) */
+.player-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    image-rendering: pixelated;
+}
+
+/* Overlay for Button */
+.player-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    text-align: center;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.player-overlay:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+/* Fancy Button */
+.player-btn {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.player-btn:hover {
+    background: linear-gradient(45deg, #ff4b2b, #ff416c);
+    transform: scale(1.1);
+}
+
+/* Player Info */
+.player-info {
+    padding: 15px;
+}
+
+.player-info h3 {
+    margin: 10px 0 5px;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.player-info p {
+    margin-top: 5px;
+    color: #ddd;
+    font-size: 14px;
+    font-style: italic;
+}
