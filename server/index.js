@@ -24,6 +24,8 @@ app.use(cors({
 app.use("/api/auth", authRoutes);
 app.use("/api", apiRoutes);
 
+console.log(process.env.NODE_ENV);
+
 if(process.env.NODE_ENV==="production"){
     console.log("we are in deployment bois");
     app.use(express.static(path.join(_dirname, "../client/dist")));
