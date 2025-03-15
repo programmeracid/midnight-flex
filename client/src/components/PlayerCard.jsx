@@ -8,10 +8,12 @@ function PlayerCard({ player }) {
 
     const [status, setStatus] = useState(""); // Default empty status
 
+    const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "";
+
     useEffect(() => {
         async function fetchPlayerStatus() {
             try {
-                const response = await fetch(`http://localhost:5001/api/:${player.username}`);
+                const response = await fetch(`${BASE_URL}/api/:${player.username}`);
                 if (response.ok) {
                     const data = await response.json();
                     setStatus(data.status); // Set status from database

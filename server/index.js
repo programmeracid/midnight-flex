@@ -21,16 +21,17 @@ app.use(cors({
     credentials:true
 }))
 
+app.use("/api/auth", authRoutes);
+app.use("/api", apiRoutes);
+
 if(process.env.NODE_ENV==="production"){
+    console.log("we are in deployment bois");
     app.use(express.static(path.join(_dirname, "../client/dist")));
 
     app.get("*", (req, res) => {
         res.sendFile(path.join(_dirname, "../client", "dist", "index.html"));
     })
 }
-
-app.use("/api/auth", authRoutes);
-app.use("/api", apiRoutes);
 
 app.listen(5001, () => {
     connectDB();

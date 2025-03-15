@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 
-const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "";
 console.log("BASE_URL : " + BASE_URL)
 
 export const useAuthStore = create((set) => ({

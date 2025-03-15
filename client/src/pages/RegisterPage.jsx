@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useAuthStore } from "../store/useAuthStore";
 
 function RegisterPage() {
     const [formData, setFormData] = useState({ username: "", password: "" });
+    const { register } = useAuthStore();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -9,15 +11,7 @@ function RegisterPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const res = await fetch("http://localhost:5001/api/auth/register", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
-
-        console.log(res);
-
-        const data = await res.json();
+        register(formData);
         alert(data.message || "Registered successfully!");
     };
 
