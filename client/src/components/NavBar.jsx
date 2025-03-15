@@ -23,7 +23,7 @@ function NavBar() {
                 <div className="navbar-links">
                     <Link to="/" className="nav-link">Home</Link>
                     <Link to="/players" className="nav-link">Players</Link>
-                    <Link to="/addplayers" className="nav-link">Add Player</Link>
+                    {/* <Link to="/addplayers" className="nav-link">Add Player</Link> */}
                 </div>
 
                 <div className="auth-section">
